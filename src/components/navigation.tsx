@@ -41,8 +41,8 @@ export function Navigation() {
             <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 pt-4">
                 <div
                     className={`max-w-6xl mx-auto rounded-2xl transition-all duration-500 ${isScrolled
-                            ? "bg-[#0F1011]/80 backdrop-blur-xl border border-white/[0.08] shadow-lg shadow-black/20"
-                            : "bg-transparent"
+                        ? "bg-[#0F1011]/80 backdrop-blur-xl border border-white/[0.08] shadow-lg shadow-black/20"
+                        : "bg-transparent"
                         }`}
                 >
                     <div className="px-4 sm:px-6">
@@ -51,7 +51,7 @@ export function Navigation() {
                             <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
                                 <div className="relative w-8 h-8 rounded-full overflow-hidden">
                                     <Image
-                                        src="/Atheron-1-final-logo.jpeg"
+                                        src="/logo.jpeg"
                                         alt="Atheron"
                                         fill
                                         className="object-cover"

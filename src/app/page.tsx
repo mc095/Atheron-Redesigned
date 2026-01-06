@@ -72,7 +72,7 @@ export default function Home() {
 
           {/* Main Headline - Serif only for this */}
           <h1
-            className="font-serif-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] text-white mb-6 sm:mb-8 animate-fade-in-up px-2"
+            className="font-serif-heading text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] text-white mb-6 sm:mb-8 animate-fade-in-up px-2"
             style={{ animationDelay: "0.2s" }}
           >
             We read the Skies.
