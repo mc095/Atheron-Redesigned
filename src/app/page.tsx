@@ -60,7 +60,7 @@ export default function Home() {
         {/* Dark Overlay */}
         <div className="absolute inset-0 video-overlay-origin" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-28 sm:pt-32 pb-16 sm:pb-20">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20 sm:pt-32 pb-16 sm:pb-20">
           {/* Pill Badge */}
           <div
             className="pill-badge mb-8 sm:mb-10 animate-fade-in"

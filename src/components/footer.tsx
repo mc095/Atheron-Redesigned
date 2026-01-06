@@ -12,7 +12,7 @@ export function Footer() {
                         <Link href="/" className="flex items-center gap-3 mb-6">
                             <div className="relative w-9 h-9 rounded-full overflow-hidden">
                                 <Image
-                                    src="/Atheron-1-final-logo.jpeg"
+                                    src="/logo.jpeg"
                                     alt="Atheron"
                                     fill
                                     className="object-cover"

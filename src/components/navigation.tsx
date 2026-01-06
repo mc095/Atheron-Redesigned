@@ -62,21 +62,23 @@ export function Navigation() {
                                 </span>
                             </Link>
 
-                            {/* Desktop Navigation */}
-                            <div className="hidden md:flex items-center gap-8">
-                                {navLinks.map((link) => (
-                                    <Link
-                                        key={link.href}
-                                        href={link.href}
-                                        className="text-sm text-muted-foreground hover:text-white transition-colors"
-                                    >
-                                        {link.label}
-                                    </Link>
-                                ))}
+                            {/* Desktop Navigation - Centered */}
+                            <div className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2">
+                                <div className="flex items-center gap-8">
+                                    {navLinks.map((link) => (
+                                        <Link
+                                            key={link.href}
+                                            href={link.href}
+                                            className="text-sm text-muted-foreground hover:text-white transition-colors"
+                                        >
+                                            {link.label}
+                                        </Link>
+                                    ))}
+                                </div>
                             </div>
 
-                            {/* CTA Button - Desktop */}
-                            <div className="hidden md:block">
+                            {/* CTA Button - Desktop - Right aligned */}
+                            <div className="hidden md:flex items-center">
                                 <Link href="/waitlist" className="btn-white text-sm py-2.5 px-5">
                                     Get Started
                                     <ArrowRight className="w-3.5 h-3.5" />
