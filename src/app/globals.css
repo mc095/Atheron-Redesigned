@@ -1,0 +1,314 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* SF Pro Display - Local Font */
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYREGULAR.OTF") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYMEDIUM.OTF") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SFPRODISPLAYBOLD.OTF") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+/* UseOrigin-style Premium Dark Theme */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "SF Pro Display", system-ui, sans-serif;
+  --font-serif: var(--font-cormorant);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-destructive: var(--destructive);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* UseOrigin Dark Color Palette */
+  --background: #0F1011;
+  --foreground: #ffffff;
+
+  /* Card - Slightly elevated */
+  --card: #161718;
+  --card-foreground: #ffffff;
+
+  --popover: #161718;
+  --popover-foreground: #ffffff;
+
+  /* Primary - White buttons */
+  --primary: #ffffff;
+  --primary-foreground: #0F1011;
+
+  /* Secondary */
+  --secondary: #1a1b1d;
+  --secondary-foreground: #ffffff;
+
+  /* Muted */
+  --muted: #1a1b1d;
+  --muted-foreground: #868686;
+
+  /* Accent */
+  --accent: #ffffff;
+  --accent-foreground: #0F1011;
+
+  --destructive: #ff4444;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: rgba(255, 255, 255, 0.2);
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-white/20 text-white;
+  }
+
+  /* Minimal Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Typography Classes */
+@layer utilities {
+
+  /* Serif Heading - Light weight like Lyon Display */
+  .font-serif-heading {
+    font-family: var(--font-cormorant), Georgia, serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+  }
+
+  /* Sans-serif body */
+  .font-sans {
+    font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  }
+
+  /* Glassmorphism Nav */
+  .glass-nav {
+    background: rgba(15, 16, 17, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Premium Card */
+  .origin-card {
+    @apply bg-card rounded-2xl border border-white/[0.06];
+    transition: all 0.3s ease;
+  }
+
+  .origin-card:hover {
+    @apply border-white/[0.12];
+    transform: translateY(-2px);
+  }
+
+  /* Pill Badge */
+  .pill-badge {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-base;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* White button */
+  .btn-white {
+    @apply bg-white text-black font-medium rounded-full px-5 py-3 text-sm sm:px-8 sm:py-4 sm:text-base inline-flex items-center gap-2;
+    transition: all 0.2s ease;
+  }
+
+  .btn-white:hover {
+    @apply bg-white/90;
+    transform: translateY(-1px);
+  }
+
+  /* Outline button */
+  .btn-outline {
+    @apply border border-white/20 text-white font-medium rounded-full px-5 py-3 text-sm sm:px-8 sm:py-4 sm:text-base inline-flex items-center gap-2;
+    background: transparent;
+    transition: all 0.2s ease;
+  }
+
+  .btn-outline:hover {
+    @apply bg-white/5 border-white/30;
+  }
+
+  /* Input bar */
+  .input-bar {
+    @apply w-full bg-[#1a1b1d] border border-white/[0.08] rounded-2xl px-6 py-5 text-white;
+    @apply placeholder:text-muted-foreground focus:outline-none focus:border-white/20;
+    transition: all 0.2s ease;
+  }
+
+  .input-bar:focus {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.05);
+  }
+
+  /* Video overlay */
+  .video-overlay-origin {
+    background: linear-gradient(180deg,
+        rgba(15, 16, 17, 0.4) 0%,
+        rgba(15, 16, 17, 0.6) 40%,
+        rgba(15, 16, 17, 0.9) 80%,
+        rgba(15, 16, 17, 1) 100%);
+  }
+
+  /* Subtle link underline */
+  .link-hover {
+    @apply relative;
+    transition: color 0.2s ease;
+  }
+
+  .link-hover:hover {
+    @apply text-white;
+  }
+
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 1s ease-out forwards;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Feature section gradient */
+.section-glow {
+  position: relative;
+}
+
+.section-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
