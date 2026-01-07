@@ -18,13 +18,13 @@ export function Footer() {
                                     className="object-cover"
                                 />
                             </div>
-                            <span className="text-lg font-medium text-white">
+                            <span className="text-lg font-serif-heading text-white">
                                 Atheron
                             </span>
                         </Link>
                         <p className="text-muted-foreground max-w-sm mb-8 leading-relaxed text-sm">
                             AI-powered space intelligence platform built to help humans
-                            understand, track, and explore space.
+                            understand, track, and explore space. Made by <a href="https://www.linkedin.com/in/ganesh097/" target="_blank" rel="noopener noreferrer" className="text-white hover:underline">Ganesh Vathumilli</a>
                         </p>
                         <div className="flex items-center gap-3">
                             <Link
@@ -49,7 +49,7 @@ export function Footer() {
                         <h4 className="text-sm font-medium text-white mb-5">Product</h4>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="/#features" className="text-sm text-muted-foreground hover:text-white transition-colors">
+                                <Link href="/#what-we-offer" className="text-sm text-muted-foreground hover:text-white transition-colors">
                                     Features
                                 </Link>
                             </li>

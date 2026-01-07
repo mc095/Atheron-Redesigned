@@ -8,7 +8,7 @@ import { ArrowLeft, Loader2, CheckCircle } from "lucide-react";
 
 // Firebase imports
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -20,28 +20,32 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const db = getFirestore(app);
 
 export default function WaitlistPage() {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
 
-    const handleSignup = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError("");
         setIsLoading(true);
 
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
+            await addDoc(collection(db, "waitlist"), {
+                name,
+                email,
+                createdAt: new Date().toISOString(),
+            });
             setIsSuccess(true);
         } catch (err: unknown) {
             if (err instanceof Error) {
                 setError(err.message);
             } else {
-                setError("An error occurred");
+                setError("An error occurred. Please try again.");
             }
         } finally {
             setIsLoading(false);
@@ -89,23 +93,22 @@ export default function WaitlistPage() {
                     </div>
 
                     <div className="origin-card p-5 sm:p-8">
-                        <form onSubmit={handleSignup} className="space-y-3 sm:space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="Your name"
+                                required
+                                className="input-bar text-sm sm:text-base"
+                            />
+
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="Email address"
                                 required
-                                className="input-bar text-sm sm:text-base"
-                            />
-
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Create password"
-                                required
-                                minLength={6}
                                 className="input-bar text-sm sm:text-base"
                             />
 
@@ -121,10 +124,10 @@ export default function WaitlistPage() {
                                 {isLoading ? (
                                     <>
                                         <Loader2 className="w-4 h-4 animate-spin" />
-                                        Creating account...
+                                        Joining...
                                     </>
                                 ) : (
-                                    "Sign Up"
+                                    "Join Waitlist"
                                 )}
                             </button>
                         </form>

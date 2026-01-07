@@ -83,7 +83,7 @@ export default function ContactPage() {
                                 href="mailto:atheron.ai@gmail.com"
                                 className="text-white hover:underline font-medium text-sm sm:text-base"
                             >
-                                contact@atheron.space
+                                atheron.ai@gmail.com
                             </a>
                         </div>
 

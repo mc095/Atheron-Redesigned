@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
+    { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/careers", label: "Careers" },
     { href: "/contact", label: "Contact" },
@@ -57,7 +58,7 @@ export function Navigation() {
                                         className="object-cover"
                                     />
                                 </div>
-                                <span className="text-base sm:text-lg font-medium text-white">
+                                <span className="text-base sm:text-lg font-sans-heading text-white">
                                     Atheron
                                 </span>
                             </Link>

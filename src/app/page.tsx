@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import Spline from "@splinetool/react-spline";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import {
@@ -12,7 +14,6 @@ import {
   Shield,
   Zap,
   Sparkles,
-  Send,
   Atom,
   Rocket,
   Telescope,
@@ -103,24 +104,85 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* AI Input Bar with rotating placeholder */}
+          {/* AI Sneak Peek - Curved Perspective Style (like Dreelio) */}
           <div
-            className="max-w-2xl mx-auto animate-slide-up px-4"
+            className="w-full animate-slide-up mt-12 sm:mt-16 px-4 sm:px-8 md:px-16"
             style={{ animationDelay: "0.8s" }}
           >
-            <p className="text-center text-muted-foreground text-sm mb-3 sm:mb-4">
-              Try asking Atheron
-            </p>
-            <div className="relative">
-              <input
-                type="text"
-                placeholder={placeholderExamples[placeholderIndex]}
-                className="input-bar w-full pl-5 sm:pl-6 pr-14 py-4 sm:py-5 text-sm sm:text-base"
-              />
-              <button className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white flex items-center justify-center hover:bg-white/90 transition-colors">
-                <Send className="w-4 h-4 text-black" />
-              </button>
+            {/* <p className="text-center text-muted-foreground text-sm mb-8 sm:mb-12">
+              Sneak peek of our AI assistant
+            </p> */}
+
+            {/* Perspective Container */}
+            <div className="relative max-w-6xl mx-auto" style={{ perspective: "1000px" }}>
+              {/* Curved Image with 3D Transform + Hover Effect */}
+              <div
+                className="relative rounded-[20px] sm:rounded-[32px] overflow-hidden shadow-2xl transition-all duration-500 ease-out cursor-pointer group hover:shadow-[0_35px_100px_-15px_rgba(0,0,0,0.6)]"
+                style={{
+                  transform: "rotateX(8deg)",
+                  transformOrigin: "center bottom",
+                  boxShadow: "0 25px 80px -12px rgba(0, 0, 0, 0.5), 0 8px 40px -8px rgba(0, 0, 0, 0.3)"
+                }}
+              >
+                {/* Hover transforms applied via CSS */}
+                <style jsx>{`
+                  .group:hover {
+                    transform: rotateX(2deg) translateY(-10px) scale(1.02) !important;
+                  }
+                `}</style>
+
+                {/* Top gradient fade */}
+                <div className="absolute top-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-b from-background/60 to-transparent z-10 pointer-events-none" />
+
+                <Image
+                  src="/athey-sneakpeek.png"
+                  alt="Athey AI Interface Preview"
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+
+                {/* Bottom gradient with CTA */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 bg-gradient-to-t from-background via-background/90 to-transparent z-10 pointer-events-none" />
+              </div>
+
+              {/* Ambient glow effect */}
+              <div className="absolute -inset-4 sm:-inset-8 bg-gradient-radial from-white/[0.02] to-transparent rounded-[40px] pointer-events-none -z-10" />
+
+              {/* CTA Button */}
+              <div className="flex justify-center -mt-16 sm:-mt-20 relative z-20">
+                <Link href="/waitlist" className="btn-white shadow-xl shadow-black/40">
+                  Join the Waitlist
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3D Globe Section */}
+      <section id="what-we-offer" className="py-12 sm:py-16 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* Section Heading */}
+          <div className="text-center mb-6 sm:mb-8">
+            <p className="text-muted-foreground uppercase tracking-wider text-sm mb-4">Explore the Universe</p>
+            <h2 className="font-serif-heading text-3xl sm:text-4xl md:text-5xl text-white">
+              What we offer
+            </h2>
+          </div>
+
+          <div className="relative h-[400px] sm:h-[500px] md:h-[600px] rounded-2xl overflow-hidden">
+            <iframe
+              src="https://my.spline.design/orbitalviewofarrakisfromtimqxyz-WlhiKEalB1KzqVaKdiAZFcW9/"
+              frameBorder="0"
+              width="100%"
+              height="100%"
+              title="3D Globe"
+              className="w-full h-full"
+              style={{ background: "#0F1011" }}
+            />
           </div>
         </div>
       </section>
@@ -263,21 +325,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 sm:py-32 border-t border-white/[0.06]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          {/* Serif for this headline */}
-          <h2 className="font-serif-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-4 sm:mb-6 px-2">
-            Ready for liftoff?
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground mb-10 sm:mb-12 max-w-xl mx-auto px-4">
-            Join the waitlist and be among the first to experience intelligent space exploration.
-          </p>
-          <Link href="/waitlist" className="btn-white text-base px-8 sm:px-10 py-4 sm:py-5">
-            Get Started
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+      {/* CTA Section - Split Layout with Rocket */}
+      <section className="relative border-t border-white/[0.06]">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-[#0a0c14] to-background" />
+
+        {/* Content Container */}
+        <div className="relative z-10 max-w-[1600px] mx-auto">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:min-h-screen">
+            {/* Left Side - Text Content */}
+            <div className="lg:w-1/2 px-8 sm:px-16 lg:px-20 xl:px-28 py-16 sm:py-20 lg:py-32 flex items-center justify-center lg:justify-end">
+              <div className="max-w-lg">
+                {/* Small label */}
+                <p className="text-muted-foreground uppercase tracking-wider text-sm mb-6">
+                  Join the Mission
+                </p>
+
+                {/* Serif headline */}
+                <h2 className="font-serif-heading text-4xl sm:text-5xl md:text-6xl text-white mb-6 leading-[1.1]">
+                  Ready for liftoff?
+                </h2>
+
+                <p className="text-base sm:text-lg text-muted-foreground mb-10 leading-relaxed">
+                  Join the waitlist and be among the first to experience intelligent space exploration.
+                </p>
+
+                <div className="flex flex-col sm:flex-row items-start gap-4">
+                  <Link href="/waitlist" className="btn-white text-base px-8 py-4">
+                    Get Started
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link href="/about" className="btn-outline text-base px-8 py-4">
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Side - 3D Rocket - Full width on mobile */}
+            <div className="w-full lg:w-1/2 relative overflow-hidden" style={{ height: "500px" }}>
+              {/* Gradient fade on left edge - desktop only */}
+              <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-32 lg:w-48 bg-gradient-to-r from-[#0a0c14] to-transparent z-10 pointer-events-none hidden lg:block" />
+
+              {/* Zoom out by making container larger and scaling down */}
+              <div
+                className="absolute inset-0 flex items-center justify-center"
+                style={{
+                  width: "200%",
+                  height: "200%",
+                  left: "-50%",
+                  top: "-50%",
+                  transform: "scale(0.5)",
+                  transformOrigin: "center center"
+                }}
+              >
+                <iframe
+                  src="https://my.spline.design/launchartemisrocket-3xEeXg1XoddSqvy7jjs6oqEM/"
+                  frameBorder="0"
+                  width="100%"
+                  height="100%"
+                  title="3D Rocket"
+                  className="w-full h-full"
+                  style={{ background: "transparent" }}
+                />
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Top/Bottom gradient fades */}
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-background to-transparent pointer-events-none z-20" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent pointer-events-none z-20" />
       </section>
 
       {/* Careers CTA */}
