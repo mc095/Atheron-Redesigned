@@ -43,7 +43,7 @@ const team = [
     },
     {
         name: "Roshani Sharma",
-        role: "HR",
+        role: "Social Media Manager Intern",
         image: "/roshani_sharma.png",
         linkedin: "https://www.linkedin.com/in/roshani-sharma-68a2a924b/",
     },
