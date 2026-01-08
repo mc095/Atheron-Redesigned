@@ -42,6 +42,12 @@ const team = [
         linkedin: "https://www.linkedin.com/in/om01deshmukh/",
     },
     {
+        name: "Arush Shah",
+        role: "Social Media Manager",
+        image: "/arush_shah.png",
+        linkedin: "https://www.linkedin.com/in/aarush-shah-a453ab3a1/",
+    },
+    {
         name: "Roshani Sharma",
         role: "Social Media Manager Intern",
         image: "/roshani_sharma.png",
