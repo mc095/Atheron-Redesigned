@@ -44,7 +44,7 @@ const team = [
     {
         name: "Arush Shah",
         role: "Social Media Manager",
-        image: "/arush_shah.png",
+        image: "/aarush-shah.jpeg",
         linkedin: "https://www.linkedin.com/in/aarush-shah-a453ab3a1/",
     },
     {
